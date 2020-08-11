@@ -3,6 +3,7 @@ FROM fedora:latest
 RUN dnf -y --setopt=tsflags=nodocs update && \
     dnf -y --setopt=tsflags=nodocs install certbot && \
     dnf -y --setopt=tsflags=nodocs install iproute && \
+    dnf -y --setopt=tsflags=nodocs install bind-utils && \
     dnf -y --setopt=tsflags=nodocs groupinstall 'Minimal Install' && \
     dnf clean all
     
