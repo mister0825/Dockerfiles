@@ -1,5 +1,7 @@
 FROM fedora:latest
 
+USER root
+
 RUN dnf -y --setopt=tsflags=nodocs update && \
     dnf -y --setopt=tsflags=nodocs install certbot && \
     dnf -y --setopt=tsflags=nodocs install iproute && \
