@@ -10,7 +10,7 @@ FROM fedora:latest
 MAINTAINER 389-devel@lists.fedoraproject.org
 EXPOSE 3389 3636
 
-ADD ./ /usr/local/src/389-ds-base
+ADD http://pagure.io/389-ds-base/raw/master/f/rpm.mk /usr/local/src/389-ds-base
 WORKDIR /usr/local/src/389-ds-base
 
 # install dependencies
