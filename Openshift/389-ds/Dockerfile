@@ -13,7 +13,6 @@ USER root
 
 EXPOSE 3389 3636
 
-RUN mkdir /usr/local/src/
 RUN cd /usr/local/src/
 RUN git clone https://pagure.io/389-ds-base.git
 WORKDIR /usr/local/src/389-ds-base/
