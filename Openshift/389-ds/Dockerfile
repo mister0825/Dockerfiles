@@ -14,6 +14,7 @@ USER root
 EXPOSE 3389 3636
 
 ADD http://pagure.io/389-ds-base/raw/master/f/rpm.mk /usr/local/src/389-ds-base
+RUN mkdir -p /usr/local/src/389-ds-base
 WORKDIR /usr/local/src/389-ds-base
 
 # install dependencies
