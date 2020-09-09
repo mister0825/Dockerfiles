@@ -25,12 +25,13 @@ RUN dnf upgrade -y \
   | sort | uniq \
   | tr '\n' ' '` \
   && dnf clean all
-  
-RUN cd /usr/local/src/
+
+# clone 389-ds-base repo 
+WORKDIR /usr/local/src/
 RUN git clone https://pagure.io/389-ds-base.git
-WORKDIR /usr/local/src/389-ds-base/
-    
+
 # build
+WORKDIR /usr/local/src/389-ds-base/
 RUN make -f 389-ds-base/rpm.mk rpms || sh -c 'echo "build failed, sleeping for some time to allow you debug" ; sleep 3600'
 
 RUN dnf install -y dist/rpms/*389*.rpm && \
