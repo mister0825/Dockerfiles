@@ -15,7 +15,8 @@ EXPOSE 3389 3636
 
 # install dependencies
 RUN dnf upgrade -y \
-  && dnf install --setopt=strict=False -y @buildsys-build rpm-build make gcc-c++ npm bzip2 git rsync \
+  && dnf groupinstall 'C Development Tools and Libraries' \
+  && dnf install --setopt=strict=False -y @buildsys-build rpm-build npm bzip2 git rsync \
   `grep -E "^(Build)?Requires" rpm/389-ds-base.spec.in \
   | grep -v -E '(name|MODULE)' \
   | awk '{ print $2 }' \
