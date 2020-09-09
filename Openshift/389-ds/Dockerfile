@@ -13,10 +13,6 @@ USER root
 
 EXPOSE 3389 3636
 
-RUN mkdir /usr/local/src/389-ds-base/
-WORKDIR /usr/local/src/389-ds-base/
-RUN git clone https://pagure.io/389-ds-base.git
-
 # install dependencies
 RUN dnf upgrade -y \
   && dnf install --setopt=strict=False -y @buildsys-build rpm-build make bzip2 git rsync \
@@ -29,6 +25,10 @@ RUN dnf upgrade -y \
   | sort | uniq \
   | tr '\n' ' '` \
   && dnf clean all
+    
+RUN mkdir /usr/local/src/389-ds-base/
+WORKDIR /usr/local/src/389-ds-base/
+RUN git clone https://pagure.io/389-ds-base.git
 
 # build
 RUN make -f rpm.mk rpms || sh -c 'echo "build failed, sleeping for some time to allow you debug" ; sleep 3600'
