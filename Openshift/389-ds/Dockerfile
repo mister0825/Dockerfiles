@@ -13,8 +13,9 @@ USER root
 
 EXPOSE 3389 3636
 
-ADD http://pagure.io/389-ds-base/raw/master/f/rpm.mk /usr/local/src/389-ds-base/
+RUN mkdir /usr/local/src/389-ds-base/
 WORKDIR /usr/local/src/389-ds-base/
+RUN git clone https://pagure.io/389-ds-base.git
 
 # install dependencies
 RUN dnf upgrade -y \
