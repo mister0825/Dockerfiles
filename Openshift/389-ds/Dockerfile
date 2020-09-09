@@ -32,7 +32,7 @@ RUN git clone https://pagure.io/389-ds-base.git
 
 # build
 WORKDIR /usr/local/src/389-ds-base/
-RUN make -f rpm.mk rpms || sh -c 'echo "build failed, sleeping for some time to allow you debug" ; sleep 3600'
+RUN SKIP_AUDIT_CI=1 make -f rpm.mk rpms || sh -c 'echo "build failed, sleeping for some time to allow you debug" ; sleep 3600'
 
 RUN dnf install -y dist/rpms/*389*.rpm && \
     dnf clean all
