@@ -9,7 +9,7 @@
 FROM fedora:latest
 MAINTAINER 389-devel@lists.fedoraproject.org
 
-USER root
+USER dirsrv
 
 EXPOSE 3389 3636
 
@@ -53,8 +53,6 @@ RUN mkdir -p /data/config && \
   ln -s /data/run /var/run/dirsrv
 
 VOLUME /data
-
-#USER dirsrv
 
 HEALTHCHECK --start-period=5m --timeout=5s --interval=5s --retries=2 \
   CMD /usr/libexec/dirsrv/dscontainer -H
