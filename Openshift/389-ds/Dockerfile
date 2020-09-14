@@ -9,7 +9,7 @@
 FROM fedora:latest
 MAINTAINER 389-devel@lists.fedoraproject.org
 
-USER dirsrv
+USER root
 
 EXPOSE 3389 3636
 
