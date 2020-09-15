@@ -49,7 +49,9 @@ RUN mkdir -p /data/config && \
   ln -s /data/config /etc/dirsrv/slapd-localhost && \
   ln -s /data/ssca /etc/dirsrv/ssca && \
   ln -s /data/run /var/run/dirsrv && \
-  chown -R dirsrv.dirsrv /data 
+  chown -R dirsrv.dirsrv /data && \
+  chown -R dirsrv.dirsrv /var/run/dirsrv && \
+  chgrp -R dirsrv /etc/dirsrv 
   
 VOLUME /data
 
