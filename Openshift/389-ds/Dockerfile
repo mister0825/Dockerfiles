@@ -9,9 +9,6 @@
 FROM fedora:latest
 MAINTAINER 389-devel@lists.fedoraproject.org
 
-RUN groupadd -r dirsrv && useradd --no-log-init -r -g dirsrv dirsrv 
-USER dirsrv
-
 EXPOSE 3389 3636
 
 # install dependencies
@@ -43,6 +40,9 @@ RUN SKIP_AUDIT_CI=1 make -f rpm.mk rpms || sh -c 'echo "build failed, sleeping f
 
 RUN dnf install -y dist/rpms/*389*.rpm && \
     dnf clean all
+    
+RUN groupadd -r dirsrv && useradd --no-log-init -r -g dirsrv dirsrv 
+USER dirsrv
 
 # Link some known static locations to point to /data
 RUN mkdir -p /data/config && \
