@@ -48,11 +48,12 @@ RUN mkdir -p /data/config && \
   mkdir -p /var/run/dirsrv && \
   ln -s /data/config /etc/dirsrv/slapd-localhost && \
   ln -s /data/ssca /etc/dirsrv/ssca && \
-  ln -s /data/run /var/run/dirsrv
+  ln -s /data/run /var/run/dirsrv && \
+  chown -R dirsrv.dirsrv /data 
   
-USER dirsrv
-
 VOLUME /data
+
+USER dirsrv
 
 HEALTHCHECK --start-period=5m --timeout=5s --interval=5s --retries=2 \
   CMD /usr/libexec/dirsrv/dscontainer -H
