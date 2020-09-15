@@ -9,7 +9,8 @@
 FROM fedora:latest
 MAINTAINER 389-devel@lists.fedoraproject.org
 
-USER root
+RUN groupadd -r dirsrv && useradd --no-log-init -r -g dirsrv dirsrv 
+USER dirsrv
 
 EXPOSE 3389 3636
 
