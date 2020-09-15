@@ -17,7 +17,7 @@ RUN dnf upgrade -y \
   && dnf install --setopt=strict=False -y @buildsys-build rpm-build npm bzip2 git rsync \
   bzip2-devel cracklib-devel cyrus-sasl-devel doxygen icu krb5-devel libcmocka-devel libdb-devel \
   libevent-devel libicu-devel net-snmp-devel nspr-devel nss-devel openldap-devel \
-  openssl-devel pam-devel pcre-devel python3-argcomplete python3-argparse-manpage \
+  openssl-devel pam-devel pcre-devel procps-ng python3-argcomplete python3-argparse-manpage \
   python3-devel python3-ldap python3-libselinux python3-policycoreutils python3-pyasn1 \
   python3-pyasn1-modules systemd-devel zlib-devel \
   `grep -E "^(Build)?Requires" rpm/389-ds-base.spec.in \
